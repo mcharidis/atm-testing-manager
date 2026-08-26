@@ -12,6 +12,7 @@ import type {
 // === Initial State ===
 const initialSession: TestingSession = {
   generalInfo: {
+    project: '',
     atm: '',
     version: '',
     environment: 'SIT',

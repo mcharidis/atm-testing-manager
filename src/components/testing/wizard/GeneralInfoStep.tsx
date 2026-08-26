@@ -23,13 +23,22 @@ export default function GeneralInfoStep() {
   return (
     <Paper sx={{ p: 3 }}>
       <Typography variant="h6" gutterBottom>
-        {t('General Information')}
+        {t('wizard.step.general')}
       </Typography>
       <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 3 }}>
         <Box>
           <TextField
             fullWidth
-            label={t('ATM')}
+            label={t('general.project')}
+            value={session.generalInfo.project}
+            onChange={handleChange('project')}
+            placeholder="e.g. NBG"
+          />
+        </Box>
+        <Box>
+          <TextField
+            fullWidth
+            label={t('general.atm')}
             value={session.generalInfo.atm}
             onChange={handleChange('atm')}
             placeholder="ATM-001"
@@ -38,7 +47,7 @@ export default function GeneralInfoStep() {
         <Box>
           <TextField
             fullWidth
-            label={t('Version')}
+            label={t('general.version')}
             value={session.generalInfo.version}
             onChange={handleChange('version')}
             placeholder="K3A 7.x"
@@ -48,20 +57,20 @@ export default function GeneralInfoStep() {
           <TextField
             fullWidth
             select
-            label={t('Environment')}
+            label={t('general.environment')}
             value={session.generalInfo.environment}
             onChange={handleChange('environment')}
           >
-            <MenuItem value="SIT">SIT</MenuItem>
-            <MenuItem value="UAT">UAT</MenuItem>
-            <MenuItem value="Production">Production</MenuItem>
+            <MenuItem value="SIT">{t('env.sit')}</MenuItem>
+            <MenuItem value="UAT">{t('env.uat')}</MenuItem>
+            <MenuItem value="Production">{t('env.prod')}</MenuItem>
           </TextField>
         </Box>
         <Box>
           <TextField
             fullWidth
             type="date"
-            label={t('Date')}
+            label={t('general.date')}
             value={session.generalInfo.date || new Date().toISOString().split('T')[0]}
             onChange={handleChange('date')}
             slotProps={{ inputLabel: { shrink: true } }}
@@ -70,7 +79,7 @@ export default function GeneralInfoStep() {
         <Box>
           <TextField
             fullWidth
-            label={t('Tester')}
+            label={t('general.tester')}
             value={session.generalInfo.tester}
             onChange={handleChange('tester')}
           />

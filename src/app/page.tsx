@@ -1,14 +1,15 @@
 'use client';
 
+import Link from 'next/link';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
 import AddIcon from '@mui/icons-material/Add';
 import ScienceIcon from '@mui/icons-material/Science';
+import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import { useTranslation } from '@/i18n/useTranslation';
 
 export default function DashboardPage() {
@@ -32,39 +33,56 @@ export default function DashboardPage() {
             {t('dashboard.welcome')}
           </Typography>
         </Stack>
-        <Typography variant="body1" sx={{ mb: 3, opacity: 0.9 }}>
+        <Typography variant="body1" sx={{ opacity: 0.9 }}>
           {t('dashboard.description')}
         </Typography>
-        <Button
-          href="/testing/new"
-          variant="contained"
-          size="large"
-          startIcon={<AddIcon />}
-          sx={{
-            bgcolor: 'white',
-            color: 'primary.main',
-            '&:hover': {
-              bgcolor: 'grey.100',
-            },
-          }}
-        >
-          {t('action.startTest')}
-        </Button>
       </Paper>
 
-      {/* Quick stats placeholder */}
-      <Typography variant="h5" sx={{ mb: 2 }}>
-        {t('dashboard.recentTests')}
-      </Typography>
-
-      <Card sx={{ borderStyle: 'dashed', borderWidth: 2, borderColor: 'grey.300' }}>
-        <CardContent sx={{ textAlign: 'center', py: 6 }}>
-          <ScienceIcon sx={{ fontSize: 48, color: 'grey.400', mb: 2 }} />
-          <Typography variant="body1" color="text.secondary">
-            {t('dashboard.noTests')}
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 4 }}>
+        {/* New Test Option */}
+        <Box>
+          <Typography variant="h5" sx={{ mb: 2 }}>
+            {t('action.startTest')}
           </Typography>
-        </CardContent>
-      </Card>
+          <Card 
+            component={Link}
+            href="/testing/new"
+            sx={{ 
+              borderStyle: 'dashed', 
+              borderWidth: 2, 
+              borderColor: 'primary.main', 
+              textDecoration: 'none',
+              display: 'block',
+              transition: 'background-color 0.2s',
+              '&:hover': {
+                bgcolor: 'primary.50'
+              }
+            }}
+          >
+            <CardContent sx={{ textAlign: 'center', py: 6 }}>
+              <AddIcon sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
+              <Typography variant="body1" color="text.primary">
+                {t('action.startTest')}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Box>
+
+        {/* Ticket placeholder */}
+        <Box>
+          <Typography variant="h5" sx={{ mb: 2 }}>
+            {t('dashboard.newTicket')}
+          </Typography>
+          <Card sx={{ borderStyle: 'dashed', borderWidth: 2, borderColor: 'grey.300' }}>
+            <CardContent sx={{ textAlign: 'center', py: 6 }}>
+              <ConfirmationNumberIcon sx={{ fontSize: 48, color: 'grey.400', mb: 2 }} />
+              <Typography variant="body1" color="text.secondary">
+                {t('dashboard.ticketDesc')}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Box>
+      </Box>
     </Box>
   );
 }

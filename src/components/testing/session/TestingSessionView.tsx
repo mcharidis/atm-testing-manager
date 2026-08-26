@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -24,6 +25,7 @@ import TestCaseDetail from './TestCaseDetail';
 type ViewMode = 'list' | 'detail';
 
 export default function TestingSessionView() {
+  const router = useRouter();
   const { t } = useTranslation();
   const { session, dispatch } = useTestingSession();
   const [activeTab, setActiveTab] = useState(0);
@@ -62,8 +64,13 @@ export default function TestingSessionView() {
       console.error('Export failed:', error);
     } finally {
       setExporting(false);
-      setShowComplete(false);
+      // We don't automatically close or reset here, let the user explicitly click "Complete"
     }
+  };
+
+  const handleCompleteSession = () => {
+    dispatch({ type: 'RESET' });
+    router.push('/testing/new'); // Go straight to new testing
   };
 
   const getCategoryName = (catId: string) => {
@@ -138,6 +145,7 @@ export default function TestingSessionView() {
         />
       ) : (
         <TestCaseDetail
+          key={categoryTestCases[selectedTestIdx].id}
           testCase={categoryTestCases[selectedTestIdx]}
           index={selectedTestIdx}
           total={categoryTestCases.length}
@@ -156,15 +164,24 @@ export default function TestingSessionView() {
             Export results to Excel?
           </Typography>
         </DialogContent>
-        <DialogActions>
+        <DialogActions sx={{ px: 3, pb: 3 }}>
           <Button onClick={() => setShowComplete(false)}>Cancel</Button>
           <Button
-            variant="contained"
+            variant="outlined"
             startIcon={<DownloadIcon />}
             onClick={handleExport}
             disabled={exporting}
+            color="primary"
           >
-            {exporting ? 'Exporting...' : t('action.export')}
+            {exporting ? 'Exporting...' : 'Save to Excel'}
+          </Button>
+          <Button
+            variant="contained"
+            color="success"
+            startIcon={<CheckCircleIcon />}
+            onClick={handleCompleteSession}
+          >
+            Complete Session
           </Button>
         </DialogActions>
       </Dialog>

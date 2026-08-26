@@ -21,6 +21,7 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
   useEffect(() => {
     const savedLocale = localStorage.getItem('atm-testing-locale') as Locale | null;
     if (savedLocale && (savedLocale === 'en' || savedLocale === 'el')) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setLocaleState(savedLocale);
     }
   }, []);

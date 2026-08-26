@@ -18,6 +18,7 @@
   "general.environment": "Περιβάλλον",
   "general.date": "Ημερομηνία",
   "general.tester": "Ελεγκτής",
+  "general.project": "Πελάτης/Έργο",
   "category.cashWithdrawal": "Ανάληψη Μετρητών",
   "category.balance": "Υπόλοιπο",
   "category.miniStatement": "Σύντομη Κίνηση",
@@ -74,5 +75,8 @@
   "categories.selectTitle": "Τι θέλετε να δοκιμάσετε;",
   "env.sit": "SIT",
   "env.uat": "UAT",
-  "env.prod": "Παραγωγή"
+  "env.prod": "Παραγωγή",
+  "menu.ticket.new": "New Ticket to KAL",
+  "dashboard.newTicket": "New Ticket to KAL",
+  "dashboard.ticketDesc": "Αυτό είναι ένα προσωρινό κείμενο για τη δημιουργία ticket. Μπορείτε να το αλλάξετε αργότερα."
 }

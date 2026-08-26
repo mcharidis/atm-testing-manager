@@ -16,8 +16,9 @@ export const testingCategories: TestingCategoryDef[] = [
     ],
     excelColumns: [
       { key: "summary", header: "Summary", width: 30, buildValue: (tc) => {
-        const amount = tc.optionValues.amount;
-        return `Withdrawal ${amount}s`;
+        if (tc.scenario) return tc.scenario;
+        const amount = tc.optionValues.amounts;
+        return `${amount} Euro`;
       }},
       { key: "productType", header: "Product type", width: 15, buildValue: (tc) => tc.card.type },
       { key: "productFamily", header: "Product Family", width: 15, buildValue: (tc) => tc.card.family },
@@ -42,7 +43,8 @@ export const testingCategories: TestingCategoryDef[] = [
     ],
     excelColumns: [
       { key: "summary", header: "Summary", width: 30, buildValue: (tc) => {
-        return `Balance ${tc.optionValues.receiptOptions}`;
+        if (tc.scenario) return tc.scenario;
+        return tc.optionValues.receiptOptions as string;
       }},
       { key: "productType", header: "Product type", width: 15, buildValue: (tc) => tc.card.type },
       { key: "productFamily", header: "Product Family", width: 15, buildValue: (tc) => tc.card.family },
@@ -66,7 +68,7 @@ export const testingCategories: TestingCategoryDef[] = [
       },
     ],
     excelColumns: [
-      { key: "summary", header: "Summary", width: 30, buildValue: (tc) => `Mini Statement ${tc.optionValues.statementType}` },
+      { key: "summary", header: "Summary", width: 30, buildValue: (tc) => tc.scenario ? tc.scenario : (tc.optionValues.statementType as string) },
       { key: "productType", header: "Product type", width: 15, buildValue: (tc) => tc.card.type },
       { key: "productFamily", header: "Product Family", width: 15, buildValue: (tc) => tc.card.family },
       { key: "transactionType", header: "Transaction type", width: 18, buildValue: (tc) => tc.transactionType },
@@ -89,7 +91,7 @@ export const testingCategories: TestingCategoryDef[] = [
       },
     ],
     excelColumns: [
-      { key: "summary", header: "Summary", width: 30, buildValue: (tc) => `Deposit ${tc.optionValues.depositType}` },
+      { key: "summary", header: "Summary", width: 30, buildValue: (tc) => tc.scenario ? tc.scenario : (tc.optionValues.depositType as string) },
       { key: "productType", header: "Product type", width: 15, buildValue: (tc) => tc.card.type },
       { key: "productFamily", header: "Product Family", width: 15, buildValue: (tc) => tc.card.family },
       { key: "transactionType", header: "Transaction type", width: 18, buildValue: (tc) => tc.transactionType },
@@ -104,7 +106,7 @@ export const testingCategories: TestingCategoryDef[] = [
     icon: "SwapHoriz",
     options: [],
     excelColumns: [
-      { key: "summary", header: "Summary", width: 30, buildValue: () => "Fund Transfer" },
+      { key: "summary", header: "Summary", width: 30, buildValue: (tc) => tc.scenario ? tc.scenario : "Standard" },
       { key: "productType", header: "Product type", width: 15, buildValue: (tc) => tc.card.type },
       { key: "productFamily", header: "Product Family", width: 15, buildValue: (tc) => tc.card.family },
       { key: "transactionType", header: "Transaction type", width: 18, buildValue: (tc) => tc.transactionType },
@@ -119,7 +121,7 @@ export const testingCategories: TestingCategoryDef[] = [
     icon: "Pin",
     options: [],
     excelColumns: [
-      { key: "summary", header: "Summary", width: 30, buildValue: () => "PIN Change" },
+      { key: "summary", header: "Summary", width: 30, buildValue: (tc) => tc.scenario ? tc.scenario : "Standard" },
       { key: "productType", header: "Product type", width: 15, buildValue: (tc) => tc.card.type },
       { key: "productFamily", header: "Product Family", width: 15, buildValue: (tc) => tc.card.family },
       { key: "transactionType", header: "Transaction type", width: 18, buildValue: (tc) => tc.transactionType },
@@ -134,7 +136,7 @@ export const testingCategories: TestingCategoryDef[] = [
     icon: "CreditCardOff",
     options: [],
     excelColumns: [
-      { key: "summary", header: "Summary", width: 30, buildValue: () => "Card Retention" },
+      { key: "summary", header: "Summary", width: 30, buildValue: (tc) => tc.scenario ? tc.scenario : "Standard" },
       { key: "productType", header: "Product type", width: 15, buildValue: (tc) => tc.card.type },
       { key: "productFamily", header: "Product Family", width: 15, buildValue: (tc) => tc.card.family },
       { key: "transactionType", header: "Transaction type", width: 18, buildValue: (tc) => tc.transactionType },

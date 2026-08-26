@@ -67,7 +67,7 @@ export default function CategoryConfigStep() {
     <Paper>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={tabIndex} onChange={handleTabChange} variant="scrollable" scrollButtons="auto">
-          {selectedCats.map((cat, index) => (
+          {selectedCats.map((cat) => (
             <Tab key={cat.id} label={t(cat.name)} />
           ))}
         </Tabs>

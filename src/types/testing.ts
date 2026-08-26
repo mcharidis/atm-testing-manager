@@ -1,5 +1,6 @@
 // === General Info ===
 export interface GeneralInfo {
+  project: string;
   atm: string;
   version: string;
   environment: string;

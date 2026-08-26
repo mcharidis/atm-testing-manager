@@ -18,6 +18,7 @@
   "general.environment": "Environment",
   "general.date": "Date",
   "general.tester": "Tester",
+  "general.project": "Customer/Project",
   "category.cashWithdrawal": "Cash Withdrawal",
   "category.balance": "Balance",
   "category.miniStatement": "Mini Statement",
@@ -74,5 +75,8 @@
   "categories.selectTitle": "What do you want to test?",
   "env.sit": "SIT",
   "env.uat": "UAT",
-  "env.prod": "Production"
+  "env.prod": "Production",
+  "menu.ticket.new": "New Ticket to KAL",
+  "dashboard.newTicket": "New Ticket to KAL",
+  "dashboard.ticketDesc": "This is a dummy text for the new ticket section. You can change this text later."
 }

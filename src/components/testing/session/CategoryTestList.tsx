@@ -108,7 +108,7 @@ export default function CategoryTestList({ testCases, onSelectTestCase }: Catego
                       <Chip label={tc.scenario} size="small" color="warning" variant="outlined" />
                     ) : (
                       <Typography variant="body2" color="text.secondary">
-                        {Object.entries(tc.optionValues).map(([k, v]) => `${v}`).join(', ')}
+                        {Object.values(tc.optionValues).join(', ')}
                       </Typography>
                     )}
                   </TableCell>

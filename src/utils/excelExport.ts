@@ -58,6 +58,7 @@ function createSummarySheet(
 
   // General Info
   const infoRows = [
+    ['Customer/Project', session.generalInfo.project],
     ['ATM', session.generalInfo.atm],
     ['Version', session.generalInfo.version],
     ['Environment', session.generalInfo.environment],

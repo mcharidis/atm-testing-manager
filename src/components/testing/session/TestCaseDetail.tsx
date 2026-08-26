@@ -50,11 +50,7 @@ export default function TestCaseDetail({
   const [status, setStatus] = React.useState<TestStatus>(testCase.status);
   const [comments, setComments] = React.useState(testCase.comments);
 
-  // Sync local state when testCase changes (navigation)
-  React.useEffect(() => {
-    setStatus(testCase.status);
-    setComments(testCase.comments);
-  }, [testCase.id, testCase.status, testCase.comments]);
+  // Local state initialized from props (remounts on key change)
 
   const handleSave = () => {
     onUpdate(testCase.id, status, comments);
