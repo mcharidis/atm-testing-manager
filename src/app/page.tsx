@@ -1,69 +1,70 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
 
-export default function Home() {
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Stack from '@mui/material/Stack';
+import AddIcon from '@mui/icons-material/Add';
+import ScienceIcon from '@mui/icons-material/Science';
+import { useTranslation } from '@/i18n/useTranslation';
+
+export default function DashboardPage() {
+  const { t } = useTranslation();
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <Box>
+      {/* Welcome section */}
+      <Paper
+        sx={{
+          p: 4,
+          mb: 4,
+          background: 'linear-gradient(135deg, #1A237E 0%, #534bae 100%)',
+          color: 'white',
+          borderRadius: 3,
+        }}
+      >
+        <Stack direction="row" spacing={2} sx={{ alignItems: 'center', mb: 2 }}>
+          <ScienceIcon sx={{ fontSize: 40 }} />
+          <Typography variant="h4">
+            {t('dashboard.welcome')}
+          </Typography>
+        </Stack>
+        <Typography variant="body1" sx={{ mb: 3, opacity: 0.9 }}>
+          {t('dashboard.description')}
+        </Typography>
+        <Button
+          href="/testing/new"
+          variant="contained"
+          size="large"
+          startIcon={<AddIcon />}
+          sx={{
+            bgcolor: 'white',
+            color: 'primary.main',
+            '&:hover': {
+              bgcolor: 'grey.100',
+            },
+          }}
+        >
+          {t('action.startTest')}
+        </Button>
+      </Paper>
+
+      {/* Quick stats placeholder */}
+      <Typography variant="h5" sx={{ mb: 2 }}>
+        {t('dashboard.recentTests')}
+      </Typography>
+
+      <Card sx={{ borderStyle: 'dashed', borderWidth: 2, borderColor: 'grey.300' }}>
+        <CardContent sx={{ textAlign: 'center', py: 6 }}>
+          <ScienceIcon sx={{ fontSize: 48, color: 'grey.400', mb: 2 }} />
+          <Typography variant="body1" color="text.secondary">
+            {t('dashboard.noTests')}
+          </Typography>
+        </CardContent>
+      </Card>
+    </Box>
   );
 }
