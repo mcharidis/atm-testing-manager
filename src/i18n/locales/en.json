@@ -1,5 +1,5 @@
 {
-  "app.title": "ATM Testing Manager",
+  "app.title": "ATM Test Tool Manager",
   "menu.dashboard": "Dashboard",
   "menu.testing": "Testing",
   "menu.testing.new": "New Test",
@@ -78,5 +78,5 @@
   "env.prod": "Production",
   "menu.ticket.new": "New Ticket to KAL",
   "dashboard.newTicket": "New Ticket to KAL",
-  "dashboard.ticketDesc": "This is a dummy text for the new ticket section. You can change this text later."
+  "dashboard.ticketDesc": "Create a Word document to open a new ticket with KAL"
 }

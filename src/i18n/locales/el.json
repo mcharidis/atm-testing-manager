@@ -1,5 +1,5 @@
 {
-  "app.title": "ATM Testing Manager",
+  "app.title": "ATM Test Tool Manager",
   "menu.dashboard": "Πίνακας Ελέγχου",
   "menu.testing": "Δοκιμές",
   "menu.testing.new": "Νέα Δοκιμή",
@@ -78,5 +78,5 @@
   "env.prod": "Παραγωγή",
   "menu.ticket.new": "New Ticket to KAL",
   "dashboard.newTicket": "New Ticket to KAL",
-  "dashboard.ticketDesc": "Αυτό είναι ένα προσωρινό κείμενο για τη δημιουργία ticket. Μπορείτε να το αλλάξετε αργότερα."
+  "dashboard.ticketDesc": "Δημιουργία word αρχειου για άνοιγμα νέου ticket στη KAL"
 }

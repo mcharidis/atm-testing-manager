@@ -48,14 +48,19 @@ export default function DashboardPage() {
             component={Link}
             href="/testing/new"
             sx={{ 
-              borderStyle: 'dashed', 
-              borderWidth: 2, 
-              borderColor: 'primary.main', 
+              borderStyle: 'solid', 
+              borderWidth: 1, 
+              borderColor: 'grey.300', 
               textDecoration: 'none',
               display: 'block',
-              transition: 'background-color 0.2s',
+              transition: 'all 0.2s ease-in-out',
+              borderRadius: 2,
+              boxShadow: 1,
               '&:hover': {
-                bgcolor: 'primary.50'
+                borderColor: 'primary.main',
+                bgcolor: 'primary.50',
+                boxShadow: 4,
+                transform: 'translateY(-4px)'
               }
             }}
           >
@@ -73,10 +78,29 @@ export default function DashboardPage() {
           <Typography variant="h5" sx={{ mb: 2 }}>
             {t('dashboard.newTicket')}
           </Typography>
-          <Card sx={{ borderStyle: 'dashed', borderWidth: 2, borderColor: 'grey.300' }}>
+          <Card 
+            component={Link}
+            href="/ticket/new"
+            sx={{ 
+              borderStyle: 'solid', 
+              borderWidth: 1, 
+              borderColor: 'grey.300',
+              textDecoration: 'none',
+              display: 'block',
+              transition: 'all 0.2s ease-in-out',
+              borderRadius: 2,
+              boxShadow: 1,
+              '&:hover': {
+                borderColor: 'primary.main',
+                bgcolor: 'primary.50',
+                boxShadow: 4,
+                transform: 'translateY(-4px)'
+              }
+            }}
+          >
             <CardContent sx={{ textAlign: 'center', py: 6 }}>
-              <ConfirmationNumberIcon sx={{ fontSize: 48, color: 'grey.400', mb: 2 }} />
-              <Typography variant="body1" color="text.secondary">
+              <ConfirmationNumberIcon sx={{ fontSize: 48, color: 'primary.main', mb: 2 }} />
+              <Typography variant="body1" color="text.primary">
                 {t('dashboard.ticketDesc')}
               </Typography>
             </CardContent>

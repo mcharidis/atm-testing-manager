@@ -10,6 +10,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import ToggleButton from '@mui/material/ToggleButton';
 import ScienceIcon from '@mui/icons-material/Science';
 import { useTranslation } from '@/i18n/useTranslation';
+import MellonLogo from '../../assets/Mellon-logo.png';
 
 interface AppShellProps {
   children: React.ReactNode;
@@ -44,7 +45,8 @@ export default function AppShell({ children }: AppShellProps) {
               flexGrow: 1
             }}
           >
-            <ScienceIcon sx={{ color: 'primary.main', fontSize: 28 }} />
+            {/* <ScienceIcon sx={{ color: 'primary.main', fontSize: 28 }} /> */}
+            <img src={MellonLogo.src} alt="Mellon Logo" style={{ height: 28 }} />
             <Typography
               variant="h6"
               noWrap
