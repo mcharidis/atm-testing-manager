@@ -172,7 +172,7 @@ export default function NewTicketPage() {
           >
             <MenuItem value="Angular">Angular</MenuItem>
             <MenuItem value="React">React</MenuItem>
-            <MenuItem value="Multi-pages">Multi-pages</MenuItem>
+            <MenuItem value="HTML">HTML</MenuItem>
             <MenuItem value="Other">Other</MenuItem>
           </TextField>
           <TextField
