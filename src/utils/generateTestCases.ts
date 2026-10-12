@@ -20,6 +20,16 @@ export function generateTestCases(session: TestingSession): TestCase[] {
 
     const categoryConfig = session.categoryConfigs[categoryId] || {};
 
+    // Card-independent categories (e.g. Supervisor Functions):
+    // one test case per option combination, no cards/languages/scenarios
+    if (categoryDef.cardIndependent) {
+      const optionCombinations = getOptionCombinations(categoryDef.options, categoryConfig);
+      for (const optionValues of optionCombinations) {
+        testCases.push(createTestCase(categoryId, NO_CARD, 'N/A', '', optionValues));
+      }
+      continue;
+    }
+
     // Determine transaction types per card
     const cardTransactionPairs = getCardTransactionPairs(session.cards);
 
@@ -58,6 +68,16 @@ export function generateTestCases(session: TestingSession): TestCase[] {
 }
 
 // === Helpers ===
+
+/** Placeholder card used for card-independent categories (e.g. Supervisor Functions). */
+const NO_CARD: Card = {
+  id: 'no-card',
+  type: '—',
+  family: '',
+  pan: '',
+  contact: false,
+  contactless: false,
+};
 
 interface CardTransactionPair {
   card: Card;
@@ -117,7 +137,7 @@ function getOptionCombinations(
 function createTestCase(
   categoryId: string,
   card: Card,
-  transactionType: 'Contact' | 'Contactless',
+  transactionType: TestCase['transactionType'],
   language: string,
   optionValues: Record<string, string | number>,
   scenario?: string

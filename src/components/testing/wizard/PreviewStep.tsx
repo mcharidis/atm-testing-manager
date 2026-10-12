@@ -43,11 +43,15 @@ export default function PreviewStep() {
       });
     }
     
-    totalTestCases += cardsWithTypesCount * totalLanguages * optionCombinations;
-  });
+    if (cat.cardIndependent) {
+      totalTestCases += optionCombinations;
+      return;
+    }
 
-  const additionalCases = session.additionalScenarios.length * cardsWithTypesCount;
-  totalTestCases += additionalCases;
+    totalTestCases += cardsWithTypesCount * totalLanguages * optionCombinations;
+    // Additional scenarios apply per card-dependent category
+    totalTestCases += session.additionalScenarios.length * cardsWithTypesCount;
+  });
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>

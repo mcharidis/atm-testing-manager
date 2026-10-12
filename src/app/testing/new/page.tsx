@@ -15,6 +15,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { useTranslation } from '@/i18n/useTranslation';
 import { useTestingSession } from '@/context/TestingSessionContext';
 import { generateTestCases } from '@/utils/generateTestCases';
+import { testingCategories } from '@/config/testingCategories';
 import GeneralInfoStep from '@/components/testing/wizard/GeneralInfoStep';
 import CategorySelectStep from '@/components/testing/wizard/CategorySelectStep';
 import CardConfigStep from '@/components/testing/wizard/CardConfigStep';
@@ -55,6 +56,11 @@ export default function NewTestPage() {
     router.push('/testing/session');
   };
 
+  // Cards & languages are only required if at least one card-dependent category is selected
+  const needsCards = session.selectedCategoryIds.some(
+    (id) => !testingCategories.find((c) => c.id === id)?.cardIndependent
+  );
+
   // Validation: can we proceed to next step?
   const canProceed = (): boolean => {
     switch (activeStep) {
@@ -63,11 +69,11 @@ export default function NewTestPage() {
       case 1: // Categories
         return session.selectedCategoryIds.length > 0;
       case 2: // Cards
-        return session.cards.length > 0;
+        return !needsCards || session.cards.length > 0;
       case 3: // Config
         return true; // defaults are always valid
       case 4: // Languages
-        return session.languages.length > 0;
+        return !needsCards || session.languages.length > 0;
       case 5: // Scenarios
         return true; // optional
       case 6: // Preview

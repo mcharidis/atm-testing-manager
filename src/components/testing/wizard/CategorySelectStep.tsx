@@ -16,6 +16,8 @@ import Savings from '@mui/icons-material/Savings';
 import SwapHoriz from '@mui/icons-material/SwapHoriz';
 import Pin from '@mui/icons-material/Pin';
 import CreditCardOff from '@mui/icons-material/CreditCardOff';
+import LockOpen from '@mui/icons-material/LockOpen';
+import Settings from '@mui/icons-material/Settings';
 
 const iconMap: Record<string, React.ReactNode> = {
   AccountBalance: <AccountBalance fontSize="large" />,
@@ -24,7 +26,9 @@ const iconMap: Record<string, React.ReactNode> = {
   Savings: <Savings fontSize="large" />,
   SwapHoriz: <SwapHoriz fontSize="large" />,
   Pin: <Pin fontSize="large" />,
-  CreditCardOff: <CreditCardOff fontSize="large" />
+  CreditCardOff: <CreditCardOff fontSize="large" />,
+  LockOpen: <LockOpen fontSize="large" />,
+  Settings: <Settings fontSize="large" />,
 };
 
 export default function CategorySelectStep() {

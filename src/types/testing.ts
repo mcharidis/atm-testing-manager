@@ -40,6 +40,11 @@ export interface TestingCategoryDef {
   icon: string;           // MUI icon name
   options: CategoryOptionDef[];
   excelColumns: ExcelColumnDef[];
+  /**
+   * If true, test cases are NOT multiplied by cards / transaction types / languages
+   * and additional scenarios are not applied (e.g. Supervisor Functions).
+   */
+  cardIndependent?: boolean;
 }
 
 // === Test Case ===
@@ -49,7 +54,7 @@ export interface TestCase {
   id: string;
   categoryId: string;
   card: Card;
-  transactionType: "Contact" | "Contactless";
+  transactionType: "Contact" | "Contactless" | "N/A";
   language: string;
   optionValues: Record<string, string | number>;
   scenario?: string;
